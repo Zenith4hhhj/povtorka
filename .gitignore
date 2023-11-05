@@ -1,12 +1,1 @@
-from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
-from vk_api import VkApi
 
-API_TOKEN = 'vk1.a.aoTIAlwMe4MoidxB_CL76Xle_vOulhODq9HjoX6POcLmS0vNQDmJaTJTDCO92QrVbAvhaNBvq0XZ8tKJD21CH76W9giIOdxaSIEIw0GDvnhMs6254MyllIKmdRI79ZP_QpaQl5KfDkj03EzQQEgTOZICYY66vDq7NPSJEYBNP4g0XXIz81G1h0D6_wgSFeFmw_-ZSWuCjAr2-jffAJKXlg'
-
-vk_session = VkApi(token=API_TOKEN)
-longpoll = VkBotLongPoll(vk_session, '221454642')
-
-for event in longpoll.listen():
-    if event.type == VkBotEventType.MESSAGE_NEW:
-        message = event.obj.message
-        vk_session.method('messages.send', {'peer_id': message['peer_id'], 'message': message['text'], 'random_id': 0})
